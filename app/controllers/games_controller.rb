@@ -5,6 +5,8 @@ class GamesController < ApplicationController
   # GET /games.json
   def index
     @games = Game.all
+    @played_games = Game.where('winner is NOT NULL')
+    @queued_games = Game.where('winner is NULL')
   end
 
   # GET /games/1
