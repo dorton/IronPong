@@ -22,3 +22,5 @@
   <h3><%= @game.winner %> won this game <%= @game.winning_score %> to <%= @game.losing_score %> on <%= @game.updated_at.strftime('%m/%d/%Y') %></h3>
 
 <% end %>
+
+<%= link_to "Back to Games List", games_path, class: "btn" %>
