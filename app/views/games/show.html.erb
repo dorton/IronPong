@@ -1,0 +1,24 @@
+<h1><%= @player1 %> Vs <%= @player2 %></h1>
+
+
+<% if @game.winning_score.nil? %>
+  <%= simple_form_for(@game) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :winner, label: "Who Won?", collection: @game.players.pluck(:name) %>
+      <%= f.input :winning_score %>
+      <%= f.input :losing_score %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+
+  <% end %>
+
+  <% else %>
+
+  <h3><%= @game.winner %> won this game <%= @game.winning_score %> to <%= @game.losing_score %> on <%= @game.updated_at.strftime('%m/%d/%Y') %></h3>
+
+<% end %>

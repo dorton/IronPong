@@ -1,0 +1,24 @@
+<div class="center">
+  <h1>LeaderBoard</h1>
+</div>
+
+<table class="bordered striped highlight">
+  <thead>
+      <tr>
+        <th>Name</th>
+        <th>Wins</th>
+        <th>Losses</th>
+        <th>Winning Percentage</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= link_to player.name, player %></td>
+        <td><%= player.win_count %></td>
+        <td><%= player.loss_count %></td>
+        <td><%= player.winning_percentage %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

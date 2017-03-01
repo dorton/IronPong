@@ -1,0 +1,30 @@
+<h1><%= @player.name %></h1>
+
+<h3><%= @player.games.count %> Games Played</h3>
+
+
+<table class="bordered striped">
+  <thead>
+    <tr>
+      <th>Date/Time</th>
+      <th>Opponent</th>
+      <th>W/L</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @player.games.each do |game| %>
+      <tr>
+        <td><%= game.updated_at.strftime('%m/%d/%Y') %></td>
+        <td><%= game.players.where("players.id != ?", @player.id).first.name %></td>
+        <% if game.winner == @player.name %>
+          <td>W</td>
+          <td><%= game.winning_score %> - <%= game.losing_score %></td>
+        <% else %>
+          <td>L</td>
+          <td><%= game.losing_score %> - <%= game.winning_score %></td>
+        <% end %>
+        <td></td>
+    <% end %>
+  </tbody>
+</table>

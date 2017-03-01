@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  winner: MyString
+  loser: MyString
+  winning_score: MyString
+  losing_score: MyString
+  spread: MyString
+  player: one
+
+two:
+  winner: MyString
+  loser: MyString
+  winning_score: MyString
+  losing_score: MyString
+  spread: MyString
+  player: two
