@@ -4,7 +4,8 @@ class Player < ApplicationRecord
   # devise :database_authenticatable, :registerable,
   #        :recoverable, :rememberable, :trackable, :validatable
   has_many :games, through: :game_outcomes
-  has_many :game_outcomes
+  has_many :game_outcomes, dependent: :destroy
+
 
   def win_count
     Game.where(winner: self.name).count
