@@ -4,4 +4,8 @@ $(document).on('turbolinks:load', function() {
 
   $('select').material_select();
 
+  $(".button-collapse").sideNav();
+
+  $(".dropdown-button").dropdown();
+
 });

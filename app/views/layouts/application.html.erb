@@ -6,9 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   </head>
 
   <body>
+      <nav>
+        <div class="nav-wrapper">
+          <%= link_to "IronPong™", root_path, class:"brand-logo" %>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><%= link_to "All Players", players_path %></li>
+            <li><%= link_to "All Games", games_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to "Create New Game", new_game_path %></li>
+            <li><%= link_to "Register to Play", new_player_path %></li>
+            <li class="divider"></li>
+            <li><%= link_to "Leader Board", home_index_path %></li>
+          </ul>
+        </div>
+      </nav>
     <div class="container">
     <%= yield %>
     </div>

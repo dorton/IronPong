@@ -1,37 +1,12 @@
-<%= form_for(player) do |f| %>
-  <% if player.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(player.errors.count, "error") %> prohibited this player from being saved:</h2>
+<%= simple_form_for(player) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% player.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :email %>
   </div>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :course %>
-    <%= f.text_field :course %>
-  </div>
-
-  <div class="field">
-    <%= f.label :semester %>
-    <%= f.text_field :semester %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>

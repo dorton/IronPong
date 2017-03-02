@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Players</h1>
 
-<table>
+<table class="bordered striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -19,5 +17,8 @@
 </table>
 
 <br>
-
-<%= link_to 'New Player', new_player_path %>
+<div class="row">
+  <div class="col s12 m6 l6">
+  <%= link_to 'Create New Player', new_player_path, class:"btn" %>
+  </div>
+</div>

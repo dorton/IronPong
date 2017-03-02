@@ -49,7 +49,7 @@ class GamesController < ApplicationController
   def update
     respond_to do |format|
       if @game.update(game_params)
-        @game.update_attributes(loser: @game.players.where("players.name != ?", @game.winner).first.name)
+        @game.update_attributes(loser: @game.players.where("players.name != ?", @game.winner).first.name) if @game.winner.present?
         @game.update_attributes(spread: @game.winning_score.to_i - @game.losing_score.to_i)
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
