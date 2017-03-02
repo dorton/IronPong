@@ -34,3 +34,9 @@
     <%= link_to "Back to Games List", games_path, class: "btn" %>
   </div>
 </div>
+
+<div class="row">
+  <div class="col s12 m6 l6">
+    <%= link_to 'Destroy This Game', @game, method: :delete, data: { confirm: 'Are you sure? It will be as if it never happened. Are you responisble enough for this ability?' }, class:"btn red" %>
+  </div>
+</div>

@@ -35,7 +35,7 @@
       <th>Winner</th>
       <th>Loser</th>
       <th>Spread</th>
-      <th colspan="2"></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -46,7 +46,6 @@
         <td><%= game.loser if game.players.present? %></td>
         <td><%= game.spread %></td>
         <td><%= link_to 'View', game, class:"btn green" %></td>
-        <td><%= link_to 'Delete', game, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn red" %></td>
       </tr>
     <% end %>
   </tbody>
