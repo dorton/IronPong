@@ -1,10 +1,15 @@
 <%= simple_form_for(@game) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.association :players, collection: Player.order(:name), prompt: "Who's Playing?" %>
+<div class="row">
+  <div class="col s6 m6 l6">
+    <div class="form-inputs">
+      <%= f.association :players, collection: Player.order(:name), prompt: "Who's Playing?" %>
 
+    </div>
   </div>
+</div>
+
 
   <div class="form-actions">
     <%= f.button :submit %>
