@@ -8,6 +8,10 @@ class PlayersController < ApplicationController
     @players = Player.all
   end
 
+  def list
+    @players = Player.all.pluck(:name)
+  end
+
   # GET /players/1
   # GET /players/1.json
   def show

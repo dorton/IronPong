@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # devise_for :players
   get 'home/index'
+  get '/players_list', to: 'players#list'
   root 'games#new'
   resources :games
   resources :players
