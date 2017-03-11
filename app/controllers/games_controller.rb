@@ -36,7 +36,9 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
-        @game.update_attributes(spread: @game.winning_score.to_i - @game.losing_score.to_i)
+        @game.update_attributes(spread: @game.winning_score.to_i - @game.losing_score.to_i) if @game.winning_score.present?
+        @game.players << Player.find_by(name: @game.winner) if @game.winner.present?
+        @game.players << Player.find_by(name: @game.loser) if @game.loser.present?
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
         format.json { render :show, status: :created, location: @game }
       else
@@ -52,7 +54,7 @@ class GamesController < ApplicationController
     respond_to do |format|
       if @game.update(game_params)
         @game.update_attributes(loser: @game.players.where("players.name != ?", @game.winner).first.name) if @game.winner.present?
-        @game.update_attributes(spread: @game.winning_score.to_i - @game.losing_score.to_i)
+        @game.update_attributes(spread: @game.winning_score.to_i - @game.losing_score.to_i) if @game.winning_score.present?
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else
