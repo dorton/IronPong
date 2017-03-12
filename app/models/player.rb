@@ -21,11 +21,10 @@ class Player < ApplicationRecord
 
   def winning_percentage
       ((self.win_count.to_f / (self.total_games.to_f.nonzero? || 1)) * 100).to_i
-
   end
 
   def self.sorted_by_winning_percentage
-    Player.all.sort_by(&:winning_percentage).reverse
+    Player.joins( :games ).group( 'players.id' ).having( 'count( game_id ) > 10' ).sort_by(&:winning_percentage).reverse
   end
 
 end
