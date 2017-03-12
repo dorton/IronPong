@@ -16,7 +16,7 @@ class Player < ApplicationRecord
   end
 
   def total_games
-    GameOutcome.joins(:player).where("players.name = ?", self.name).count
+    self.win_count + self.loss_count
   end
 
   def winning_percentage
