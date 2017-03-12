@@ -2,54 +2,40 @@
 <h1>Games</h1>
 <% if @queued_games.present? %>
 <h3>Queued Games</h3>
-<table class="bordered striped responsive-table">
-  <thead>
-    <tr>
-      <th>Date/Time</th>
-      <th>Player 1</th>
-      <th>Player 2</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @queued_games.each do |game| %>
-      <tr>
-        <td><%= game.updated_at.strftime('%m/%d/%Y - %l:%M %p') %></td>
-        <td><%= game.players.first.name if game.players.present? %></td>
-        <td><%= game.players.last.name if game.players.present? %></td>
-        <td><%= link_to 'Update Score', game %></td>
-        <td><%= link_to 'Edit Players', edit_game_path(game) %></td>
-        <td><%= link_to 'Delete', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <div class="row">
+  <% @queued_games.each do |game| %>
+    <div class="col s12 m4">
+      <div class="card darken-1">
+        <div class="card-content">
+          <span class="card-title"><%= game.players.first.name if game.players.present? %> <br />Vs. <br /><%= game.players.last.name if game.players.present? %></span>
+          <p><%= game.updated_at.strftime('%m/%d/%Y - %l:%M %p') %></p>
+        </div>
+        <div class="card-action">
+          <%= link_to 'Update Score', game %>
+        </div>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 <% end %>
 
 <h3>Completed Games</h3>
 
-<table class="bordered striped responsive-table">
-  <thead>
-    <tr>
-      <th>Winner</th>
-      <th>Loser</th>
-      <th>Spread</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @played_games.each do |game| %>
-      <tr>
-        <td><%= game.winner %></td>
-        <td><%= game.loser if game.players.present? %></td>
-        <td><%= game.spread %></td>
-        <td><%= link_to 'View', game, class:"btn green" %></td>
-      </tr>
+  <div class="row">
+  <% @played_games.each do |game| %>
+    <div class="col s12 m4">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title"><%= game.winner %> - <%= game.winning_score %> <br /> <%= game.loser %> - <%= game.losing_score %></span>
+          <p><%= game.updated_at.strftime('%m/%d/%Y - %l:%M %p') %></p>
+        </div>
+        <div class="card-action">
+          <%= link_to 'More', game %>
+        </div>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
 <br>
 <div class="row">
