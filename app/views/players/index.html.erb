@@ -4,14 +4,17 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Record</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @players.each do |player| %>
+    <% @players.order(name: :asc).each do |player| %>
       <tr>
         <td><%= link_to player.name, player %></td>
+        <td><%= player.win_count %> - <%= player.loss_count %></td>
       </tr>
+
     <% end %>
   </tbody>
 </table>
