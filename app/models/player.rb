@@ -24,7 +24,7 @@ class Player < ApplicationRecord
   end
 
   def self.sorted_by_winning_percentage
-    Player.joins( :games ).group( 'players.id' ).having( 'count( game_id ) > 10' ).sort_by(&:winning_percentage).reverse
+    Player.joins(:games).group('players.id').having('count( game_id ) > 10').sort_by(&:winning_percentage).reverse
   end
 
 end
