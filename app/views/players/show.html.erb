@@ -2,8 +2,9 @@
 
 <h3><%= @player.total_games %> Games Played</h3>
 
+<h3>Record: <%= @player.win_count %> - <%= @player.loss_count %></h3>
 
-<table class="bordered striped">
+<table class="bordered striped tablesorter">
   <thead>
     <tr>
       <th>Date/Time</th>
@@ -13,10 +14,10 @@
     </tr>
   </thead>
   <tbody>
-    <% @player.games.each do |game| %>
+    <% @player.games.order(updated_at: :desc).each do |game| %>
       <tr>
         <td><%= game.updated_at.strftime('%m/%d/%Y') %></td>
-        <td><%= game.players.where("players.id != ?", @player.id).first.name if game.players.count > 1 %></td>
+        <td><%= link_to game.players.where("players.id != ?", @player.id).first.name, game.players.where("players.id != ?", @player.id).first  if game.players.count > 1 %></td>
         <% if game.winner == @player.name %>
           <td>W</td>
           <td><%= game.winning_score %> - <%= game.losing_score %></td>
